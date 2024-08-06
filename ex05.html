@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <h1>DOM 조작 : TDL 만들기</h1>
+    <input type="text" class="text" />
+    <button class="addBtn">add</button>
+    <div class="tdl"></div>
+  </body>
+  <script>
+    const text = document.querySelector(".text");
+    const addBtn = document.querySelector(".addBtn");
+    const tdl = document.querySelector(".tdl");
+
+    let count = 0;
+
+    const addTodo = () => {
+      if (text.value.trim() === "") {
+        alert("입력해주세요");
+        return;
+      }
+      const con = document.createElement("div");
+      const checkbox = document.createElement("input");
+      const list = document.createElement("span");
+      const delBtn = document.createElement("button");
+
+      const key = count;
+      count += 1;
+
+      con.setAttribute("key", key);
+      checkbox.setAttribute("type", "checkbox");
+      delBtn.innerText = "delete";
+
+      con.appendChild(checkbox);
+      con.appendChild(list);
+      con.appendChild(delBtn);
+      tdl.appendChild(con);
+
+      list.innerText = text.value;
+      checkbox.addEventListener("change", (e) => {
+        list.style.textDecoration = e.target.checked ? "line-through" : "";
+      });
+      text.value = "";
+
+      delBtn.addEventListener("click", () => {
+        delTodo(key);
+      });
+    };
+
+    addBtn.addEventListener("click", addTodo);
+    text.addEventListener("keyup", (e) => {
+      if (e.keyCode === 13) {
+        addTodo();
+      }
+    });
+    const delTodo = (key) => {
+      const con = document.querySelector(`[key="${key}"]`);
+      tdl.removeChild(con);
+    };
+  </script>
+</html>
