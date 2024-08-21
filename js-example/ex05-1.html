@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <h1>남은 글자수 세기 : 타이머 / localStorage</h1>
+    <h2></h2>
+    <textarea name="" id=""></textarea>
+    <hr />
+    <p></p>
+    <button>ERASER</button>
+    <input type="text" />
+  </body>
+  <script>
+    const textarea = document.querySelector("textarea");
+    const h2 = document.querySelector("h2");
+    let timerId;
+
+    //선택하면 타이머 돌아감
+    textarea.addEventListener("focus", (e) => {
+      timerId = setInterval(() => {
+        const length = textarea.value.length;
+        h2.innerText = `입력 글자 수 : ${length}`;
+      }, 50);
+    });
+
+    //초점 해제시 타이머 정지
+    textarea.addEventListener("blur", (e) => {
+      clearInterval(timerId);
+    });
+
+    const p = document.querySelector("p");
+    const button = document.querySelector("button");
+    const input = document.querySelector("input");
+
+    input.addEventListener("keyup", (e) => {
+      const value = e.target.value;
+      localStorage.setItem("input", value);
+    });
+
+    const savedValue = localStorage.getItem("input");
+    if (savedValue) {
+      input.value = savedValue;
+      p.innerText = `마지막 값 : ${savedValue}`;
+    }
+
+    button.addEventListener("click", (e) => {
+      localStorage.clear();
+      input.value = "";
+    });
+  </script>
+</html>
