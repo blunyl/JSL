@@ -41,7 +41,7 @@
 }
 
 .content-wrapper {
-  width: calc(45% - 2rem);
+  width: calc(100% - 2rem);
   margin: auto;
   max-width: 600px;
   position: relative;
@@ -81,7 +81,7 @@
 }
 
 .button-container {
-  width: 100%;
+  /* width: 100%; */
   max-width: 280px;
   margin-top: 5px;
   padding: 5px;
@@ -171,24 +171,12 @@
   color: #645d7e;
 }
 
-@media (max-width: 1200px) {
-  .form {
-    padding: 16px;
-  }
-
-  .todo-section {
-    max-width: 90%; /* 최대 너비를 화면 크기에 맞춰 조정 */
-    padding: 16px;
-  }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 660px) {
   .form {
     padding: 16px;
   }
 
   .input-wrapper,
-  .button-container,
   .todo-section {
     width: 100%;
     max-width: 100%;
