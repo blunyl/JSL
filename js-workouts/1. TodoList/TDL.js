@@ -54,6 +54,8 @@ const addTask = () => {
 
       if (e.target.checked) {
         todo.appendChild(listItem);
+      } else {
+        todo.insertBefore(listItem, todo.firstChild);
       }
     }
   });
