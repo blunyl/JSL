@@ -61,7 +61,7 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
-  width: 80%;
+  width: 100%;
   padding: 10px;
   box-sizing: border-box;
 }
@@ -113,7 +113,7 @@
 
 .todo-section {
   box-sizing: border-box;
-  width: 480px;
+  width: 100%;
   padding: 23px;
   height: 500px;
   margin-top: 10px;
@@ -203,13 +203,6 @@
 @media (max-width: 480px) {
   .form {
     padding: 12px;
-  }
-
-  .input-wrapper,
-  .button-container,
-  .todo-section {
-    width: 100%;
-    max-width: 100%;
   }
 
   .todo-input,
